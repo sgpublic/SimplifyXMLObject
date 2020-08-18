@@ -1,0 +1,8 @@
+# SimplifyXMLObject
+
+这是一个轻量级XML解析器，使用方法模仿了Android中JSONObject的语法结构，使用正则表达式完成解析，支持按照从属关系获取XML节点。
+
+注意！SimplifyXMLObject目前只有解析功能，没有主动XML语法检查、创建XML数据的功能，并且只能解析一般的、正常的XML数据，如需更完整的功能请参考或使用DOM4j等各大知名XML解析器。
+
+同时欢迎各路大神一同完善其他功能的支持~
+
