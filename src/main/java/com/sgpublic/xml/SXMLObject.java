@@ -193,6 +193,12 @@ public class SXMLObject {
         return xmlString;
     }
 
+    /**
+     * 判断当前 XML 节点的标签中是否有指定名称的属性值。
+     *
+     * @param attrName 指定名称的属性值
+     * @return 返回当前 XML 节点的标签中是否有指定名称的属性值。
+     */
     public boolean isAttrNull(String attrName){
         return attrs.get(attrName) == null;
     }
