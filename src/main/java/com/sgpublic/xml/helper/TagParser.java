@@ -8,6 +8,11 @@ public class TagParser {
     private final String tagName;
     private final Map<String, String> attrMap = new HashMap<>();
 
+    /**
+     * 创建一个节点标签解析器
+     *
+     * @param tagString 节点标签文本
+     */
     public TagParser(String tagString) {
         StringMatcher matcher;
         String tagData = tagString.substring(1).split(">")[0];
@@ -27,10 +32,20 @@ public class TagParser {
         }
     }
 
+    /**
+     * 获取当前节点中解析到的属性值集合
+     *
+     * @return 属性值集合
+     */
     public Map<String, String> getAttrMap() {
         return attrMap;
     }
 
+    /**
+     * 获取当前节点中解析到的标签名称
+     *
+     * @return 标签名称
+     */
     public String getTagName() {
         return tagName;
     }
