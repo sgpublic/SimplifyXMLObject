@@ -1,5 +1,7 @@
 package com.sgpublic.xml;
 
+import com.sgpublic.xml.exception.SXMLException;
+
 import java.util.ArrayList;
 
 public class SXMLArray {
@@ -20,4 +22,6 @@ public class SXMLArray {
         }
         return builder.toString();
     }
+
+    public static void main(String[] args) {}
 }

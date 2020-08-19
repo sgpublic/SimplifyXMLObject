@@ -1,14 +1,12 @@
 package com.sgpublic.xml;
 
+import com.sgpublic.xml.exception.SXMLException;
 import com.sgpublic.xml.helper.StringMatcher;
 import com.sgpublic.xml.helper.TagMatcher;
 import com.sgpublic.xml.helper.TagParser;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class SXMLObject {
     private final String xmlString;
@@ -181,4 +179,6 @@ public class SXMLObject {
             return new TagMatcher(false);
         }
     }
+
+    public static void main(String[] args) {}
 }
