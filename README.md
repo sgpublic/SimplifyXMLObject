@@ -2,34 +2,34 @@
 
 ![GitHub](https://img.shields.io/github/license/sgpublic/SimplifyXMLObject)
 
-## English | [中文](https://github.com/SGPublic/SimplifyXMLObject/blob/master/README_CN.md)
+## [English](https://github.com/SGPublic/SimplifyXMLObject/blob/master/README.md) | 中文
 
-`SimplifyXMLObject` is an open source lightweight xml parser, which has the advantages of forming a tree structure, intuitive and easy-to-understand usage process, and easy code writing.
+`SimplifyXMLObject` 是一个开源的轻量级xml解析器，拥有形成树形结构、使用流程直观好理解、代码易编写等优点。
 
-**Note!** The current version of `SimplifyXMLObject` is only a beta version, and its reliability has not been extensively tested. For stability, please refer to or use major well-known xml parsers such as `DOM4j`.
+**注意！** 目前版本的 `SimplifyXMLObject` 还只是一个 beta 版本，其可靠性尚未大量检验，如追求稳定请参考或使用 `DOM4j` 等各大知名xml解析器。
 
-## How to use
+## 使用
 
-### Create an SXMLObject object
+### 创建一个 SXMLObject 对象
 
-Pass in an XML data of type `String`, and return an object of type `SXMLObject`. If the root node of the XML is incomplete or does not exist, an `SXMLException` is thrown.
+传入一个 `String` 类型的 XML 数据，返回一个类型为 `SXMLObject` 的对象。若该 XML 的根节点不完整或不存在，则抛出 `SXMLException` 。
 
 ```java
 String xmlData = /*your xml data*/;
 SXMLObject object = new SXMLObject(xmlData);
 ```
 
-### Get child nodes
+### 获取子节点
 
-Pass in the name of the child node you want to get, and return an object of type `SXMLObject`. If there is no such node in the child node of the XML or the node label is incomplete, an `SXMLException` will be thrown.
+传入想要获取的子节点名称，返回一个类型为 `SXMLObject` 的对象。若该 XML 中的子节点中没有该节点或该节点标签不完整，则抛出 `SXMLException` 。
 
 ```java
 SXMLObject avtivity = object.getXMLObject("yourTagName");
 ```
 
-### Get child node attribute value
+### 获取子节点属性值
 
-Pass in the name of the attribute value you want to get, and return the value of the corresponding type. If the attribute value does not exist in the node, an `SXMLException` is thrown.
+传入想获取的属性值名称，返回对应类型的数值。若该节点中不存在该属性值，则抛出 `SXMLException` 。
 
 ```java
 String stringAttr = object.getStringAttr("yourAttributeName")
@@ -39,22 +39,22 @@ double longAttr = object.getDoubleAttr("yourAttributeName")
 boolean booleanAttr = object.getBooleanAttr("yourAttributeName")
 ```
 
-### Get child node group
+### 获取子节点组
 
-If the node contains multiple child nodes with the same name, these child nodes can be created as a `SXMLArray` object. Pass in the name of the child node you want to get, and return a `SXMLArray` object. If there is no such node in the child node of the XML or the node label is incomplete, an `SXMLException` will be thrown.
+若节点中包含多个名称相同的子节点，则可以将这些子节点创建为一个 `SXMLArray` 对象。传入想获取的子节点名称，返回一个 `SXMLArray` 对象。若该 XML 中的子节点中没有该节点或该节点标签不完整，则抛出 `SXMLException` 。
 
 ```java
 SXMLArray array = object.getXMLArray("yourTagName");
 ```
 
-### Get node from node group
+### 从节点组中获取节点
 
-Pass in the number of the node you want to get (starting from 0), and return an object of type `SXMLObject`. If the sequence number is out of range, a `SXMLException` is thrown.
+传入想获取的节点序号（从0开始），返回一个类型为 `SXMLObject` 的对象。若序号超出范围，则抛出 `SXMLException` 。
 
 ```java
 SXMLObject object1 = array.getXMLObject(1);
 ```
 
-### Other functions
+### 其他功能
 
-**_Continuous development_**
+**_持续更新中_**
