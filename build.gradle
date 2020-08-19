@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id 'signing'
 }
 
 group 'io.github.sgpublic'
@@ -22,6 +23,7 @@ publishing {
         publishMyProjectMiniexcel(MavenPublication) {
             from components.java
             artifact sourcesJar
+
             artifact javadocJar
 
             pom {
@@ -67,6 +69,10 @@ publishing {
             }
         }
     }
+}
+
+signing {
+    sign publishing.publications.publishMyProjectMiniexcel
 }
 
 repositories {
