@@ -1,9 +1,73 @@
 plugins {
     id 'java'
+    id 'maven-publish'
 }
 
 group 'io.github.sgpublic'
-version '1.0-SNAPSHOT'
+version '1.0.0-SNAPSHOT'
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allJava
+}
+
+// 生成 javadoc jar
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+publishing {
+    publications {
+        publishMyProjectMiniexcel(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+
+            pom {
+                name = "SimplifyXMLObject"
+                description = "一个支持按照从属关系获取XML节点的轻量级XML解析器，语法结构模仿Android开发中使用的JSONObject的使用方法。"
+                url = "https://github.com/SGPublic/SimplifyXMLObject"
+                licenses {
+                    license {
+                        name = "The GNU GENERAL PUBLIC LICENSE, Version 3"
+                        url = "https://www.gnu.org/licenses/gpl-3.0.html"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "sgpublic"
+                        name = "SGPublic"
+                    }
+                }
+                scm {
+                    connection = "scm:git:https://github.com/SGPublic/SimplifyXMLObject.git"
+                    developerConnection = "scm:git:https://github.com/SGPublic/SimplifyXMLObject.git"
+                    url = "https://github.com/SGPublic/SimplifyXMLObject"
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name 'Release'
+            url 'https://oss.sonatype.org/service/local/staging/deploy/maven2'
+            credentials {
+                username = "${NEXUS_USERNAME}"
+                password = "${NEXUS_PASSWORD}"
+            }
+        }
+        maven {
+            name = 'Snapshot'
+            url = 'https://oss.sonatype.org/content/repositories/snapshots'
+            credentials {
+                username = "${NEXUS_USERNAME}"
+                password = "${NEXUS_PASSWORD}"
+            }
+        }
+    }
+}
 
 repositories {
     mavenCentral()
