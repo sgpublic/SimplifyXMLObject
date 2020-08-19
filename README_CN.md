@@ -2,6 +2,8 @@
 
 ![GitHub](https://img.shields.io/github/license/sgpublic/SimplifyXMLObject)
 
+## [English](https://github.com/SGPublic/SimplifyXMLObject/blob/master/README.md) | 中文
+
 `SimplifyXMLObject` 是一个开源的轻量级xml解析器，拥有形成树形结构、使用流程直观好理解、代码易编写等优点。
 
 **注意！** 目前版本的 `SimplifyXMLObject` 还只是一个 beta 版本，其可靠性尚未大量检验，如追求稳定请参考或使用 `DOM4j` 等各大知名xml解析器。
