@@ -48,12 +48,27 @@ public class SXMLObject {
     }
 
     /**
-     * 判断当前 XML 节点是否有子节点
+     * 判断当前 XML 节点是否有内容
      *
      * @return 返回当前 XML 节点是否有子节点
      */
     public boolean hasInnerData() {
         return hasInnerData;
+    }
+
+    /**
+     * 判断当前 XML 节点是否有指定标签名称的子节点。
+     *
+     * @param tagName 子节点标签名称
+     * @return 返回当前 XML 节点是否有该标签名称的子节点。
+     */
+    public boolean isTagNull(String tagName){
+        if (hasInnerData){
+            StringMatcher matcher = new StringMatcher("<" + tagName, xmlString);
+            return !matcher.find();
+        } else {
+            return true;
+        }
     }
 
     /**
@@ -178,21 +193,27 @@ public class SXMLObject {
         return xmlString;
     }
 
+    public boolean isAttrNull(String attrName){
+        return attrs.get(attrName) == null;
+    }
+
     /**
      * 从类内部获取到节点属性值的 String 类型
      *
      * @param attrName 属性名称
      * @return 返回
-     * @throws SXMLException 若该节点中不存在该属性值，则抛出 SXMLException。
+     * @throws SXMLException 若该节点中没有属性值或不存在指定的属性值，则抛出 SXMLException。
      */
     private String getAttrValue(String attrName) throws SXMLException {
-        String attrValue = attrs.get(attrName);
-        if (attrValue == null) {
-            throw new SXMLException(
-                    String.format(SXMLException.ATTR_KEY_NULL, attrName)
-            );
+        if (!attrs.isEmpty()){
+            String attr = attrs.get(attrName);
+            if (attr != null){
+                return attr;
+            } else {
+                throw new SXMLException(SXMLException.ATTR_KEY_NULL);
+            }
         } else {
-            return attrValue;
+            throw new SXMLException(SXMLException.ATTR_NULL);
         }
     }
 

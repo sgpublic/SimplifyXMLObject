@@ -41,6 +41,22 @@ public class SXMLArray {
     }
 
     /**
+     * 遍历 SXMLArray 中所有成员
+     *
+     * @param event 遍历事件
+     */
+    public void forEach(ForEachEvent event) {
+        for (int index = 0; index < length(); index++){
+            try {
+                event.onEachItem(new SXMLObject(xmlArray.get(index)), index);
+            } catch (SXMLException e){
+                event.onError(e);
+                break;
+            }
+        }
+    }
+
+    /**
      * 返回 SXMLArray 中所有成员连成起来后的 String。
      *
      * @return 连接后的 String
@@ -51,5 +67,10 @@ public class SXMLArray {
             builder.append(xmlItem);
         }
         return builder.toString();
+    }
+
+    public interface ForEachEvent {
+        public void onEachItem(SXMLObject object, int index) throws SXMLException;
+        public void onError(SXMLException e);
     }
 }
