@@ -5,6 +5,7 @@ plugins {
 }
 
 group 'io.github.sgpublic'
+//SNAPSHOT
 version '1.0.1'
 
 task sourcesJar(type: Jar) {
@@ -12,7 +13,6 @@ task sourcesJar(type: Jar) {
     from sourceSets.main.allJava
 }
 
-// 生成 javadoc jar
 task javadocJar(type: Jar) {
     classifier = 'javadoc'
     from javadoc.destinationDir
