@@ -96,6 +96,26 @@ public class SXMLObject {
     }
 
     /**
+     * 若当前节点中不包含子节点且有内部数据，则可以直接获取这些数据。
+     *
+     * @return 节点中非子节点数据
+     * @throws SXMLException 若当前节点包含子节点或不包含任何内容，则抛出 SXMLException。
+     */
+    public String getInnerData() throws SXMLException {
+        if (hasInnerData) {
+            String innerString = xmlString.replace(rootTag, "")
+                    .replaceAll("</" + rootTagName + ">", "");
+            if (!new StringMatcher("<", innerString).find()){
+                return innerString;
+            } else {
+                throw new SXMLException(SXMLException.INNER_NOT_STRING_DATA);
+            }
+        } else {
+            throw new SXMLException(SXMLException.INNER_UNAVAILABLE, rootTagName);
+        }
+    }
+
+    /**
      * 获取节点标签中 String 类型的属性值。
      *
      * @param attrName 属性名称
