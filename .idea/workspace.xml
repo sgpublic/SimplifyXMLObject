@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="SimplifyXMLObject.main:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="33626949-cb4c-4d26-b35b-cf95c13e26f4" name="Default Changelist" comment="降级JDK 1.8">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SimplifyXMLObject" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SimplifyXMLObject" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SimplifyXMLObject" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="publishing" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1gJCrciskDMixGxvFUPqv0k6cgJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.21954022" />
+    <property name="settings.editor.selected.configurable" value="preferences.pathVariables" />
+  </component>
+  <component name="RunManager" selected="Gradle.PublishRelease">
+    <configuration name="Test" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <module name="SimplifyXMLObject.test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PublishRelease" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="publishPublishMyProjectMiniexcelPublicationToReleaseRepository" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="PublishSnapshot" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="publishPublishMyProjectMiniexcelPublicationToSnapshotRepository" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Test" />
+      <item itemvalue="Gradle.PublishRelease" />
+      <item itemvalue="Gradle.PublishSnapshot" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="33626949-cb4c-4d26-b35b-cf95c13e26f4" name="Default Changelist" comment="" />
+      <created>1597823509552</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1597823509552</updated>
+      <workItem from="1597823511225" duration="2227000" />
+      <workItem from="1597825768934" duration="2794000" />
+      <workItem from="1597838197180" duration="17000" />
+      <workItem from="1597844756330" duration="3120000" />
+      <workItem from="1597885659287" duration="52000" />
+      <workItem from="1597888210116" duration="291000" />
+    </task>
+    <task id="LOCAL-00001" summary="更换为gradle">
+      <created>1597823614250</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1597823614250</updated>
+    </task>
+    <task id="LOCAL-00002" summary="更换为gradle">
+      <created>1597823761727</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1597823761727</updated>
+    </task>
+    <task id="LOCAL-00003" summary="更换为gradle">
+      <created>1597825202792</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1597825202792</updated>
+    </task>
+    <task id="LOCAL-00004" summary="更换为gradle">
+      <created>1597825490227</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1597825490227</updated>
+    </task>
+    <task id="LOCAL-00005" summary="更换为gradle">
+      <created>1597825499346</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1597825499346</updated>
+    </task>
+    <task id="LOCAL-00006" summary="更换为gradle">
+      <created>1597825594841</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1597825594841</updated>
+    </task>
+    <task id="LOCAL-00007" summary="更换为gradle">
+      <created>1597826790746</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1597826790746</updated>
+    </task>
+    <task id="LOCAL-00008" summary="更新README.md">
+      <created>1597846912133</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1597846912133</updated>
+    </task>
+    <task id="LOCAL-00009" summary="更新">
+      <created>1597846950387</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1597846950387</updated>
+    </task>
+    <task id="LOCAL-00010" summary="更新README.md">
+      <created>1597847092936</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1597847092936</updated>
+    </task>
+    <task id="LOCAL-00011" summary="降级JDK 1.8">
+      <created>1597888442922</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1597888442922</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="更换为gradle" />
+    <MESSAGE value="更新" />
+    <MESSAGE value="更新README.md" />
+    <MESSAGE value="降级JDK 1.8" />
+    <option name="LAST_COMMIT_MESSAGE" value="降级JDK 1.8" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="175" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597827945410">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="175" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597827945410" />
+    <state x="672" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597824067109">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="672" y="320" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1597824067109" />
+    <state x="689" y="322" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1597823641286">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="689" y="322" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597823641286" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1597885706911">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1597885706911" />
+    <state width="1877" height="203" key="GridCell.Tab.0.bottom" timestamp="1597829761430">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="203" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597829761430" />
+    <state width="1877" height="203" key="GridCell.Tab.0.center" timestamp="1597829761430">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="203" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597829761430" />
+    <state width="1877" height="203" key="GridCell.Tab.0.left" timestamp="1597829761430">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="203" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597829761430" />
+    <state width="1877" height="203" key="GridCell.Tab.0.right" timestamp="1597829761430">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="203" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597829761430" />
+    <state x="440" y="94" key="SettingsEditor" timestamp="1597888417084">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1597888417084" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1597888450530">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1597888450530" />
+    <state x="763" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597885680897">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="763" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1597885680897" />
+  </component>
+</project>
