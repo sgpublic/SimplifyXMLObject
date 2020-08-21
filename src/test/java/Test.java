@@ -14,27 +14,20 @@ public class Test {
 
                 SXMLObject application = object.getXMLObject("application");
                 SXMLArray activities = application.getXMLArray("activity");
-                activities.forEach(new SXMLArray.ForEachEvent() {
-                    @Override
-                    public void onEachItem(SXMLObject object, int index) throws SXMLException {
-                        if (!object.isTagNull("intent-filter")){
-                            String activityName = object.getStringAttr("android:name");
-                            SXMLObject intentFilter = object.getXMLObject("intent-filter");
-                            if (!intentFilter.isTagNull("action")){
-                                SXMLObject action = intentFilter.getXMLObject("action");
-                                if (!action.isAttrNull("android:name")){
-                                    String actionName = action.getStringAttr("android:name");
-                                    System.out.println("main activity is " + packageName + activityName);
-                                } else {
-                                    System.out.println("main activity not found.");
-                                }
+                activities.forEach((object1, index) -> {
+                    if (!object1.isTagNull("intent-filter")){
+                        String activityName = object1.getStringAttr("name");
+                        SXMLObject intentFilter = object1.getXMLObject("intent-filter");
+                        if (!intentFilter.isTagNull("action")){
+                            SXMLObject action = intentFilter.getXMLObject("action");
+                            if (!action.isAttrNull("name")
+                                    && action.getStringAttr("name").equals("jwproject.JwIntent.action.ACTION_MAIN")){
+                                String actionName = action.getStringAttr("name");
+                                System.out.println("main activity is " + packageName + activityName);
+                            } else {
+                                System.out.println("main activity not found.");
                             }
                         }
-                    }
-
-                    @Override
-                    public void onError(SXMLException e) {
-                        e.printStackTrace();
                     }
                 });
             } else {
@@ -46,36 +39,20 @@ public class Test {
     }
 
     private static String getString(){
-        return "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
-                "<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\n" +
-                "    xmlns:tools=\"http://schemas.android.com/tools\"\n" +
-                "    package=\"com.sgpublic.bilidownload\">\n" +
-                "\n" +
-                "    <uses-permission android:name=\"android.permission.READ_PHONE_STATE\" />\n" +
-                "    <uses-permission android:name=\"android.permission.INTERNET\" />\n" +
-                "    <uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />\n" +
-                "\n" +
+        return "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +
+                "<manifest\n" +
+                "    package=\"com.sgpublic.bilicheers\">\n" +
                 "    <application\n" +
-                "        android:name=\".BaseService.Main\"\n" +
-                "        android:icon=\"@mipmap/ic_launcher\"\n" +
-                "        tools:ignore=\"AllowBackup,GoogleAppIndexingWarning,InnerclassSeparator\"\n" +
-                "        tools:targetApi=\"q\">\n" +
-                "        <activity android:name=\".License\" />\n" +
-                "        <activity android:name=\".Search\" />\n" +
-                "        <activity android:name=\".OtherFollows\" />\n" +
-                "        <activity android:name=\".Season\" />\n" +
-                "        <activity\n" +
-                "            android:name=\".Main\"\n" +
-                "            android:launchMode=\"singleTop\" />\n" +
-                "        <activity\n" +
-                "            android:name=\".Welcome\"\n" +
-                "            android:launchMode=\"singleTop\">\n" +
+                "        lable=\"@string/app_name\"\n" +
+                "        icon=\"@mipmap/ic_launcher\"\n" +
+                "        theme=\"@style/material\">\n" +
+                "        <activity name=\".MainActivity\">\n" +
                 "            <intent-filter>\n" +
-                "                <action android:name=\"android.intent.action.MAIN\" />\n" +
-                "\n" +
-                "                <category android:name=\"android.intent.category.LAUNCHER\" />\n" +
+                "                <action name=\"jwproject.JwIntent.action.ACTION_MAIN\" />\n" +
                 "            </intent-filter>\n" +
                 "        </activity>\n" +
+                "        <activity name=\".BangumiPlayer\" />\n" +
+                "        <activity name=\".LivePlayer\" />\n" +
                 "    </application>\n" +
                 "</manifest>";
     }

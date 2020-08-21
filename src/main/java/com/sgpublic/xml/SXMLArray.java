@@ -45,14 +45,9 @@ public class SXMLArray {
      *
      * @param event 遍历事件
      */
-    public void forEach(ForEachEvent event) {
+    public void forEach(ForEachEvent event) throws SXMLException {
         for (int index = 0; index < length(); index++){
-            try {
-                event.onEachItem(new SXMLObject(xmlArray.get(index)), index);
-            } catch (SXMLException e){
-                event.onError(e);
-                break;
-            }
+            event.onEachItem(new SXMLObject(xmlArray.get(index)), index);
         }
     }
 
@@ -70,7 +65,6 @@ public class SXMLArray {
     }
 
     public interface ForEachEvent {
-        public void onEachItem(SXMLObject object, int index) throws SXMLException;
-        public void onError(SXMLException e);
+        void onEachItem(SXMLObject object, int index) throws SXMLException;
     }
 }

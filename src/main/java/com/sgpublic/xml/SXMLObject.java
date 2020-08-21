@@ -236,10 +236,10 @@ public class SXMLObject {
             if (attr != null){
                 return attr;
             } else {
-                throw new SXMLException(SXMLException.ATTR_KEY_NULL);
+                throw new SXMLException(SXMLException.ATTR_KEY_NULL, attrName);
             }
         } else {
-            throw new SXMLException(SXMLException.ATTR_NULL);
+            throw new SXMLException(SXMLException.ATTR_NULL, rootTagName);
         }
     }
 
