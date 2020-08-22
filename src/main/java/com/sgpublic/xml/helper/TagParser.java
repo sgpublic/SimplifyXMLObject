@@ -15,8 +15,8 @@ public class TagParser {
      */
     public TagParser(String tagString) {
         StringMatcher matcher;
-        String tagData = tagString.substring(1).split(">")[0]
-                .replace("/", "");
+        String tagData = tagString.replace("\"/>", "\">")
+                .substring(1).split(">")[0];
         matcher = new StringMatcher("\\u0020", tagData);
         if (matcher.find()) {
             String[] list = tagData.split("\\u0020");

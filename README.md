@@ -1,7 +1,7 @@
 # SimplifyXMLObject
 
 ![GitHub](https://img.shields.io/github/license/sgpublic/SimplifyXMLObject)
-![GitHub Releases (by Release)](https://img.shields.io/github/downloads/sgpublic/SimplifyXMLObject/1.0.0/total)
+![GitHub Releases (by Release)](https://img.shields.io/github/downloads/sgpublic/SimplifyXMLObject/1.1.2/total)
 
 
 ## 中文 | [English](https://github.com/SGPublic/SimplifyXMLObject/tree/master/README_EN.md)
@@ -15,7 +15,7 @@
 
 Gradle
 ```groovy
-implementation 'io.github.sgpublic:SimplifyXMLObject:1.1.0'
+implementation 'io.github.sgpublic:SimplifyXMLObject:1.1.2'
 ```
 
 maven
@@ -23,7 +23,7 @@ maven
 <dependency>
   <groupId>io.github.sgpublic</groupId>
   <artifactId>SimplifyXMLObject</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.2</version>
 </dependency>
 ```
 
