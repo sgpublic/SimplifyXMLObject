@@ -6,7 +6,7 @@
 
 ## [中文](https://github.com/SGPublic/SimplifyXMLObject/tree/master/README.md) | English
 
-SimplifyXMLObject is an open-source light XML Parser. It has the following advantages: easy use, clear logic, and convenient coding.
+SimplifyXMLObject is an open-source light XML Parser. It has the following advantages: easy use, clear logic, and convenient coding. The functions of parsing, editing, and creating XML data are support.
 
 **Attention!** Recent version is still in development. Its reliability is not widely tested. If you are considering reliability, refer to `DOM4j`  
 and other famous XML parsers, please.

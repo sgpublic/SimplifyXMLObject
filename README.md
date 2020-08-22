@@ -6,7 +6,7 @@
 
 ## 中文 | [English](https://github.com/SGPublic/SimplifyXMLObject/tree/master/README_EN.md)
 
-这是一个开源的轻量级 XML 解析器，拥有使用方法简单、逻辑结构清晰、代码易编写等优点。
+这是一个开源的轻量级 XML 解析器，拥有使用方法简单、逻辑结构清晰、代码易编写等优点，支持解析、编辑、创建XML数据的功能。
 
 **注意！** 当前版本仅为一个开发版本，其可靠性尚未经过大量检验，如需考虑稳定性请参考或使用 `DOM4j` 等各大知名 XML 解析器。
 
