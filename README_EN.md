@@ -17,7 +17,7 @@ Adding `SimplifyXMLObject` to the project dependency:
 Gradle
 
 ```groovy
-implementation 'io.github.sgpublic:SimplifyXMLObject:1.1.2'
+implementation 'io.github.sgpublic:SimplifyXMLObject:1.2.0'
 ```
 
 maven
@@ -26,7 +26,7 @@ maven
 <dependency>
   <groupId>io.github.sgpublic</groupId>
   <artifactId>SimplifyXMLObject</artifactId>
-  <version>1.1.2</version>
+  <version>1.2.0</version>
 </dependency>
 ```
 
