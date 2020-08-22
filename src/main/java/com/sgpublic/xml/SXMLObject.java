@@ -6,14 +6,29 @@ import com.sgpublic.xml.helper.TagMatcher;
 import com.sgpublic.xml.helper.TagParser;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.function.BiConsumer;
 
 public class SXMLObject {
     private final String xmlString;
     private final String rootTag;
-    private final String rootTagName;
+    private String rootTagName;
     private final Map<String, String> attrs;
-    private final boolean hasInnerData;
+    private boolean hasInnerData;
+    private String innerString;
+
+    /**
+     * 创建一个空 SXMLObject 对象
+     */
+    public SXMLObject(){
+        hasInnerData = false;
+        xmlString = null;
+        rootTag = null;
+        rootTagName = null;
+        innerString = "";
+        attrs = new HashMap<>();
+    }
 
     /**
      * 创建一个 SXMLObject 对象
@@ -39,12 +54,22 @@ public class SXMLObject {
                 TagMatcher tagMatcher = matchTag(xmlData, rootTagName);
                 if (tagMatcher.matches()) {
                     this.xmlString = xmlData;
-                    hasInnerData = tagMatcher.getType() == TagMatcher.TYPE_NORMAL;
+                    if (tagMatcher.getType() == TagMatcher.TYPE_NORMAL){
+                        hasInnerData = true;
+                        innerString = xmlData.replace(rootTag, "")
+                                .replaceAll("</" + rootTagName + ">", "");
+                    } else {
+                        hasInnerData = false;
+                    }
                     return;
                 }
             }
         }
         throw new SXMLException(SXMLException.NOT_A_XML_DATA);
+    }
+
+    public void setRootTagName(String name){
+        this.rootTagName = name;
     }
 
     /**
@@ -71,6 +96,31 @@ public class SXMLObject {
         }
     }
 
+    public SXMLObject putAttr(String key, String value){
+        attrs.put(key, value);
+        return this;
+    }
+
+    public SXMLObject putAttr(String key, Integer value){
+        attrs.put(key, String.valueOf(value));
+        return this;
+    }
+
+    public SXMLObject putAttr(String key, Long value){
+        attrs.put(key, String.valueOf(value));
+        return this;
+    }
+
+    public SXMLObject putAttr(String key, Double value){
+        attrs.put(key, String.valueOf(value));
+        return this;
+    }
+
+    public SXMLObject putAttr(String key, Boolean value){
+        attrs.put(key, String.valueOf(value));
+        return this;
+    }
+
     /**
      * 获取当前节点中指定子节点标签名称的子节点。
      *
@@ -80,8 +130,6 @@ public class SXMLObject {
      */
     public SXMLObject getXMLObject(String tagName) throws SXMLException {
         if (hasInnerData) {
-            String innerString = xmlString.replace(rootTag, "")
-                    .replaceAll("</" + rootTagName + ">", "");
             TagMatcher tagMatcher = matchTag(innerString, tagName);
             if (tagMatcher.matches()) {
                 return new SXMLObject(tagMatcher.getXmlData());
@@ -111,7 +159,7 @@ public class SXMLObject {
                 throw new SXMLException(SXMLException.INNER_NOT_STRING_DATA);
             }
         } else {
-            throw new SXMLException(SXMLException.INNER_UNAVAILABLE, rootTagName);
+            throw new SXMLException(SXMLException.INNER_NULL, rootTagName);
         }
     }
 
@@ -171,6 +219,26 @@ public class SXMLObject {
     }
 
     /**
+     * 从类内部获取到节点属性值的 String 类型
+     *
+     * @param attrName 属性名称
+     * @return 返回
+     * @throws SXMLException 若该节点中没有属性值或不存在指定的属性值，则抛出 SXMLException。
+     */
+    private String getAttrValue(String attrName) throws SXMLException {
+        if (!attrs.isEmpty()){
+            String attr = attrs.get(attrName);
+            if (attr != null){
+                return attr;
+            } else {
+                throw new SXMLException(SXMLException.ATTR_KEY_NULL, attrName);
+            }
+        } else {
+            throw new SXMLException(SXMLException.ATTR_NULL, rootTagName);
+        }
+    }
+
+    /**
      * 若节点中包含多个名称相同的子节点，则可以将这些子节点创建为一个 SXMLArray 对象。
      *
      * @param tagName 子节点标签名称
@@ -205,15 +273,6 @@ public class SXMLObject {
     }
 
     /**
-     * 返回经过 SXMLObject 格式化后的 XML 数据。
-     *
-     * @return 格式化后的 XML 数据
-     */
-    public String toString() {
-        return xmlString;
-    }
-
-    /**
      * 判断当前 XML 节点的标签中是否有指定名称的属性值。
      *
      * @param attrName 指定名称的属性值
@@ -223,23 +282,66 @@ public class SXMLObject {
         return attrs.get(attrName) == null;
     }
 
-    /**
-     * 从类内部获取到节点属性值的 String 类型
-     *
-     * @param attrName 属性名称
-     * @return 返回
-     * @throws SXMLException 若该节点中没有属性值或不存在指定的属性值，则抛出 SXMLException。
-     */
-    private String getAttrValue(String attrName) throws SXMLException {
-        if (!attrs.isEmpty()){
-            String attr = attrs.get(attrName);
-            if (attr != null){
-                return attr;
+    public SXMLObject removeAttr(String key){
+        if (attrs.get(key) != null){
+            attrs.remove(key);
+        }
+        return this;
+    }
+
+    public SXMLObject putInnerObject(SXMLObject object){
+        hasInnerData = true;
+        innerString = innerString + object.toString();
+        return this;
+    }
+
+    public SXMLObject removeInnerObject(String tagName) throws SXMLException {
+        if (hasInnerData) {
+            TagMatcher tagMatcher = matchTag(innerString, tagName);
+            if (tagMatcher.matches()) {
+                innerString = innerString.replace(tagMatcher.getXmlData(), "");
             } else {
-                throw new SXMLException(SXMLException.ATTR_KEY_NULL, attrName);
+                throw new SXMLException(SXMLException.TAG_NULL, tagName);
             }
         } else {
-            throw new SXMLException(SXMLException.ATTR_NULL, rootTagName);
+            throw new SXMLException(
+                    SXMLException.INNER_UNAVAILABLE, rootTagName
+            );
+        }
+        return this;
+    }
+
+    public SXMLObject setInnerData(String string){
+        hasInnerData = true;
+        innerString = string;
+        return this;
+    }
+
+    /**
+     * 返回经过 SXMLObject 格式化后的 XML 数据。
+     *
+     * @return 格式化后的 XML 数据
+     */
+    public String toString() {
+        if (rootTagName == null) {
+            Throwable e = new SXMLException(SXMLException.TAG_NOT_SET);
+            e.printStackTrace();
+            return null;
+        } else {
+            StringBuilder data = new StringBuilder();
+            data.append("<")
+                    .append(rootTagName);
+            attrs.forEach((s, s2) -> data.append(" ").append(s).append("=\"").append(s2).append("\""));
+            if (hasInnerData){
+                data.append(">")
+                        .append(innerString)
+                        .append("</")
+                        .append(rootTagName)
+                        .append(">");
+            } else {
+                data.append("/>");
+            }
+            return data.toString();
         }
     }
 

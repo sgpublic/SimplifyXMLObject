@@ -2,8 +2,58 @@ import com.sgpublic.xml.SXMLArray;
 import com.sgpublic.xml.SXMLObject;
 import com.sgpublic.xml.exception.SXMLException;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.BiConsumer;
+
 public class Test {
     public static void main(String[] args) {
+        parseData();
+        //buildData();
+        //editData();
+    }
+
+    private static void buildData(){
+        SXMLObject object = new SXMLObject();
+        object.setRootTagName("recourse");
+        Map<String, String> map = new HashMap<>();
+        map.put("app_name", "哔哩番剧");
+        map.put("title_bangumi", "番剧");
+        map.put("title_mine", "我的");
+        map.put("title_login_welcome", "欢迎使用哔哩番剧");
+        map.put("text_login_welcome", "请使用哔哩哔哩账号登录");
+        map.forEach(new BiConsumer<String, String>() {
+            @Override
+            public void accept(String s, String s2) {
+                SXMLObject object1 = new SXMLObject();
+                object1.setRootTagName("string");
+                object1.putAttr("name", s);
+                object1.setInnerData(s2);
+                object.putInnerObject(object1);
+            }
+        });
+        System.out.println(object.toString());
+    }
+
+    private static void editData(){
+        try {
+            SXMLObject object = new SXMLObject(getString());
+            object.putAttr("key", "value");
+
+            SXMLObject application = object.getXMLObject("application");
+            application.removeAttr("lable");
+
+            object.removeInnerObject("application");
+            object.putInnerObject(application);
+
+            System.out.println(object.toString());
+        } catch (SXMLException e){
+            e.printStackTrace();
+        }
+    }
+
+    private static void parseData(){
         try {
             String xml = getString();
             SXMLObject object = new SXMLObject(xml);
