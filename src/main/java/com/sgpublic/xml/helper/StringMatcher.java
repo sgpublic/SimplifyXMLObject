@@ -1,11 +1,13 @@
 package com.sgpublic.xml.helper;
 
+import com.sgpublic.xml.exception.SXMLException;
+
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringMatcher {
     private final Matcher matcher;
-    private final String input;
 
     /**
      * 一个正则表达式的二次封装
@@ -14,7 +16,6 @@ public class StringMatcher {
      * @param input 待匹配文本
      */
     public StringMatcher(String regex, String input){
-        this.input = input;
         this.matcher = Pattern.compile(regex).matcher(input);
     }
 
@@ -38,12 +39,25 @@ public class StringMatcher {
     }
 
     /**
+     * 遍历匹配结果
+     *
+     * @param event 遍历事件
+     */
+    public void matches(EachEvent event){
+        int count = 0;
+        while (find()){
+            event.onEach(matcher.start(), matcher.end(), matcher.group(), count);
+            count++;
+        }
+    }
+
+    /**
      * 获取匹配结果中匹配到的文本
      *
      * @return 匹配到的文本
      */
-    public String getFoundString(){
-        return input.substring(matcher.start(), matcher.end());
+    public String group(){
+        return matcher.group();
     }
 
     /**
@@ -62,5 +76,9 @@ public class StringMatcher {
      */
     public int end(){
         return matcher.end();
+    }
+
+    public interface EachEvent {
+        void onEach(int start, int end, String group, int index);
     }
 }

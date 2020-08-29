@@ -5,10 +5,8 @@ import com.sgpublic.xml.helper.StringMatcher;
 import com.sgpublic.xml.helper.TagMatcher;
 import com.sgpublic.xml.helper.TagParser;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.BiConsumer;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class SXMLObject {
     private final String xmlString;
@@ -47,7 +45,7 @@ public class SXMLObject {
 
             matcher = new StringMatcher("<(.*?)>", xmlData);
             if (matcher.find()) {
-                rootTag = matcher.getFoundString();
+                rootTag = matcher.group();
                 TagParser parser = new TagParser(rootTag);
                 rootTagName = parser.getTagName();
                 attrs = parser.getAttrMap();
@@ -96,6 +94,13 @@ public class SXMLObject {
         }
     }
 
+    /**
+     * 添加属性值
+     *
+     * @param key 欲添加的属性名称
+     * @param value 欲添加的属性值
+     * @return 返回当前对象
+     */
     public SXMLObject putAttr(String key, String value){
         attrs.put(key, value);
         return this;
@@ -282,6 +287,12 @@ public class SXMLObject {
         return attrs.get(attrName) == null;
     }
 
+    /**
+     * 删除属性值
+     *
+     * @param key 欲删除的属性名称
+     * @return 返回当前对象
+     */
     public SXMLObject removeAttr(String key){
         if (attrs.get(key) != null){
             attrs.remove(key);
@@ -289,12 +300,25 @@ public class SXMLObject {
         return this;
     }
 
+    /**
+     * 添加子标签
+     *
+     * @param object 欲添加的子标签对象
+     * @return 返回当前对象
+     */
     public SXMLObject putInnerObject(SXMLObject object){
         hasInnerData = true;
         innerString = innerString + object.toString();
         return this;
     }
 
+    /**
+     * 删除子标签
+     *
+     * @param tagName 欲删除的子标签名称
+     * @return 返回当前对象那个
+     * @throws SXMLException 若该子标签不存在或当前标签没有子标签，则抛出 SXMLException
+     */
     public SXMLObject removeInnerObject(String tagName) throws SXMLException {
         if (hasInnerData) {
             TagMatcher tagMatcher = matchTag(innerString, tagName);
@@ -311,6 +335,12 @@ public class SXMLObject {
         return this;
     }
 
+    /**
+     * 设置当前标签内容
+     *
+     * @param string 标签内容
+     * @return 返回当前对象
+     */
     public SXMLObject setInnerData(String string){
         hasInnerData = true;
         innerString = string;
@@ -332,16 +362,34 @@ public class SXMLObject {
             data.append("<")
                     .append(rootTagName);
             attrs.forEach((s, s2) -> data.append(" ").append(s).append("=\"").append(s2).append("\""));
+            StringBuilder result = new StringBuilder();
             if (hasInnerData){
-                data.append(">")
-                        .append(innerString)
-                        .append("</")
-                        .append(rootTagName)
+                data.append(">").append(innerString)
+                        .append("</").append(rootTagName)
                         .append(">");
+
+//                String[] split = data.toString().split("<");
+//                StringBuilder format = new StringBuilder();
+//                for (int index = 0; index < split.length; index++) {
+//                    String splitIndex = split[index];
+//                    if (!splitIndex.equals("")){
+//                        result.append("<").append(splitIndex);
+//                        if (splitIndex.startsWith("/")){
+//                            format.delete(0, 4);
+//                        } else if (!splitIndex.matches("/(^\"*?)>")){
+//                            format.append("    ");
+//                        }
+//                        if (splitIndex.endsWith(">") && index < split.length - 1){
+//                            result.append("\n").append(format);
+//                        }
+//                    }
+//                }
+
+                result.append(data);
             } else {
-                data.append("/>");
+                result.append(data).append("/>");
             }
-            return data.toString();
+            return result.toString();
         }
     }
 
@@ -362,7 +410,7 @@ public class SXMLObject {
         while (!tagName.equals(nowTag)){
             matcher = new StringMatcher("<" + nowTag + "(.*?)/([^\"]*?)>", nowString);
             if (matcher.find()){
-                String tagRange = matcher.getFoundString();
+                String tagRange = matcher.group();
                 if (new StringMatcher("<", tagRange).find(1)){
                     matcher = new StringMatcher("</" + nowTag + ">", nowString);
                     if (matcher.find()){
@@ -385,7 +433,7 @@ public class SXMLObject {
         }
         matcher = new StringMatcher("<" + nowTag + "(.*?)/([^\"]*?)>", nowString);
         if (matcher.find()){
-            String tagRange = matcher.getFoundString();
+            String tagRange = matcher.group();
             if (new StringMatcher("<", tagRange).find(1)){
                 matcher = new StringMatcher("</" + nowTag + ">", nowString);
                 if (matcher.find()){

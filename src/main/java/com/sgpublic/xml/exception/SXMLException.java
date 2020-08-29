@@ -11,6 +11,7 @@ public class SXMLException extends Exception {
     public static String INNER_UNAVAILABLE = "There's no inner data in tag \"%s\"";
     public static String INNER_NOT_STRING_DATA = "The data in tag \"%s\" is not a string data.";
     public static String ARRAY_OUT_OF_RANGE = "Array index out of range.";
+    public static String MATCHER_OUT_OF_RANGE = "Matches index out of range.";
 
     public SXMLException(){}
 

@@ -9,8 +9,8 @@ import java.util.function.BiConsumer;
 
 public class Test {
     public static void main(String[] args) {
-        parseData();
-        //buildData();
+        //parseData();
+        buildData();
         //editData();
     }
 
@@ -23,15 +23,12 @@ public class Test {
         map.put("title_mine", "我的");
         map.put("title_login_welcome", "欢迎使用哔哩番剧");
         map.put("text_login_welcome", "请使用哔哩哔哩账号登录");
-        map.forEach(new BiConsumer<String, String>() {
-            @Override
-            public void accept(String s, String s2) {
-                SXMLObject object1 = new SXMLObject();
-                object1.setRootTagName("string");
-                object1.putAttr("name", s);
-                object1.setInnerData(s2);
-                object.putInnerObject(object1);
-            }
+        map.forEach((s, s2) -> {
+            SXMLObject object1 = new SXMLObject();
+            object1.setRootTagName("string");
+            object1.putAttr("name", s);
+            object1.setInnerData(s2);
+            object.putInnerObject(object1);
         });
         System.out.println(object.toString());
     }
@@ -88,7 +85,7 @@ public class Test {
         }
     }
 
-    private static String getString(){
+    public static String getString(){
         return "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +
                 "<manifest\n" +
                 "    package=\"com.sgpublic.bilicheers\">\n" +
