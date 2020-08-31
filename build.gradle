@@ -20,7 +20,7 @@ task javadocJar(type: Jar) {
 
 publishing {
     publications {
-        publishMyProjectMiniexcel(MavenPublication) {
+        SimplifyXMLObject(MavenPublication) {
             from components.java
             artifact sourcesJar
 
@@ -72,7 +72,7 @@ publishing {
 }
 
 signing {
-    sign publishing.publications.publishMyProjectMiniexcel
+    sign publishing.publications.SimplifyXMLObject
 }
 
 repositories {
