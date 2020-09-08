@@ -1,6 +1,7 @@
 package com.sgpublic.xml;
 
 import com.sgpublic.xml.exception.SXMLException;
+import com.sgpublic.xml.helper.EntityReferrer;
 import com.sgpublic.xml.helper.StringMatcher;
 import com.sgpublic.xml.helper.TagMatcher;
 import com.sgpublic.xml.helper.TagParser;
@@ -102,7 +103,7 @@ public class SXMLObject {
      * @return 返回当前对象
      */
     public SXMLObject putAttr(String key, String value){
-        attrs.put(key, value);
+        attrs.put(key, EntityReferrer.encode(value));
         return this;
     }
 
@@ -159,7 +160,7 @@ public class SXMLObject {
             String innerString = xmlString.replace(rootTag, "")
                     .replaceAll("</" + rootTagName + ">", "");
             if (!new StringMatcher("<", innerString).find()){
-                return innerString;
+                return EntityReferrer.decode(innerString);
             } else {
                 throw new SXMLException(SXMLException.INNER_NOT_STRING_DATA);
             }
@@ -176,7 +177,9 @@ public class SXMLObject {
      * @throws SXMLException 若该节点中不存在该属性值，则抛出 SXMLException。
      */
     public String getStringAttr(String attrName) throws SXMLException {
-        return getAttrValue(attrName);
+        return getAttrValue(
+                EntityReferrer.decode(attrName)
+        );
     }
 
     /**
@@ -343,7 +346,7 @@ public class SXMLObject {
      */
     public SXMLObject setInnerData(String string){
         hasInnerData = true;
-        innerString = string;
+        innerString = EntityReferrer.encode(string);
         return this;
     }
 
@@ -368,6 +371,7 @@ public class SXMLObject {
                         .append("</").append(rootTagName)
                         .append(">");
 
+//                TODO : 格式化
 //                String[] split = data.toString().split("<");
 //                StringBuilder format = new StringBuilder();
 //                for (int index = 0; index < split.length; index++) {
