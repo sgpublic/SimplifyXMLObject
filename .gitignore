@@ -1,5 +1,8 @@
 /build/
 /out/
 /.gradle/
+/.idea/
+
 gradle.properties
+
 /src/test/java/LocalTest.java
