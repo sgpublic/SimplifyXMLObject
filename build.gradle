@@ -8,71 +8,73 @@ group 'io.github.sgpublic'
 //SNAPSHOT
 version '1.2.2'
 
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from sourceSets.main.allJava
-}
+if (file("./gradle.properties").exists()){
+    task sourcesJar(type: Jar) {
+        classifier = 'sources'
+        from sourceSets.main.allJava
+    }
 
-task javadocJar(type: Jar) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
+    task javadocJar(type: Jar) {
+        classifier = 'javadoc'
+        from javadoc.destinationDir
+    }
 
-publishing {
-    publications {
-        SimplifyXMLObject(MavenPublication) {
-            from components.java
-            artifact sourcesJar
+    publishing {
+        publications {
+            SimplifyXMLObject(MavenPublication) {
+                from components.java
+                artifact sourcesJar
 
-            artifact javadocJar
+                artifact javadocJar
 
-            pom {
-                name = "SimplifyXMLObject"
-                description = "一个支持按照从属关系获取XML节点的轻量级XML解析器，拥有使用方法简单、语法逻辑清晰等优点，支持解析、编辑、创建XML数据的功能。"
-                url = "https://github.com/SGPublic/SimplifyXMLObject"
-                licenses {
-                    license {
-                        name = "The GNU GENERAL PUBLIC LICENSE, Version 3"
-                        url = "https://www.gnu.org/licenses/gpl-3.0.html"
-                    }
-                }
-                developers {
-                    developer {
-                        id = "sgpublic"
-                        name = "SGPublic"
-                    }
-                }
-                scm {
-                    connection = "scm:git:https://github.com/SGPublic/SimplifyXMLObject.git"
-                    developerConnection = "scm:git:https://github.com/SGPublic/SimplifyXMLObject.git"
+                pom {
+                    name = "SimplifyXMLObject"
+                    description = "一个支持按照从属关系获取XML节点的轻量级XML解析器，拥有使用方法简单、语法逻辑清晰等优点，支持解析、编辑、创建XML数据的功能。"
                     url = "https://github.com/SGPublic/SimplifyXMLObject"
+                    licenses {
+                        license {
+                            name = "The GNU GENERAL PUBLIC LICENSE, Version 3"
+                            url = "https://www.gnu.org/licenses/gpl-3.0.html"
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = "sgpublic"
+                            name = "SGPublic"
+                        }
+                    }
+                    scm {
+                        connection = "scm:git:https://github.com/SGPublic/SimplifyXMLObject.git"
+                        developerConnection = "scm:git:https://github.com/SGPublic/SimplifyXMLObject.git"
+                        url = "https://github.com/SGPublic/SimplifyXMLObject"
+                    }
+                }
+            }
+        }
+
+        repositories {
+            maven {
+                name 'Release'
+                url 'https://oss.sonatype.org/service/local/staging/deploy/maven2'
+                credentials {
+                    username = "${NEXUS_USERNAME}"
+                    password = "${NEXUS_PASSWORD}"
+                }
+            }
+            maven {
+                name = 'Snapshot'
+                url = 'https://oss.sonatype.org/content/repositories/snapshots'
+                credentials {
+                    username = "${NEXUS_USERNAME}"
+                    password = "${NEXUS_PASSWORD}"
                 }
             }
         }
     }
 
-    repositories {
-        maven {
-            name 'Release'
-            url 'https://oss.sonatype.org/service/local/staging/deploy/maven2'
-            credentials {
-                username = "${NEXUS_USERNAME}"
-                password = "${NEXUS_PASSWORD}"
-            }
-        }
-        maven {
-            name = 'Snapshot'
-            url = 'https://oss.sonatype.org/content/repositories/snapshots'
-            credentials {
-                username = "${NEXUS_USERNAME}"
-                password = "${NEXUS_PASSWORD}"
-            }
-        }
+    signing {
+        sign publishing.publications.SimplifyXMLObject
     }
-}
-
-signing {
-    sign publishing.publications.SimplifyXMLObject
 }
 
 repositories {
