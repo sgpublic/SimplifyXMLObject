@@ -15,7 +15,7 @@
 
 Gradle
 ```groovy
-implementation 'io.github.sgpublic:SimplifyXMLObject:1.2.0'
+implementation 'io.github.sgpublic:SimplifyXMLObject:1.2.2'
 ```
 
 maven
@@ -23,7 +23,7 @@ maven
 <dependency>
   <groupId>io.github.sgpublic</groupId>
   <artifactId>SimplifyXMLObject</artifactId>
-  <version>1.2.0</version>
+  <version>1.2.2</version>
 </dependency>
 ```
 
